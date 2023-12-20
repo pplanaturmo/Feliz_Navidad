@@ -22,7 +22,6 @@
       }
 
       body {
-        box-sizing: content-box;
         height: 100%;
         width: 100%;
         background-image: url("https://img.freepik.com/vector-gratis/fondo-navideno-copos-nieve-estrellas_1048-9451.jpg?w=1380&t=st=1703065809~exp=1703066409~hmac=3cec720009c6a77057948fa9b8db3bfd33c97e615e7025fafd4f7efaee335cab");
@@ -85,6 +84,7 @@
       .regalo {
         width: 9em;
         height: 6em;
+        color: ;
       }
 
       #id1 {
@@ -127,32 +127,38 @@
         background-repeat: no-repeat;
       }
 
-      @media (max-width: 1250px) {
-        
+      
+      @media only screen and (max-width: 991px) {
+        body {
+          font-size: 11px;
+        }
       }
 
-
+      @media only screen and (max-width: 768px) {
+        body {
+          font-size: 8px;
+        }
+      }
     </style>
     <script defer>
-      let textoOld =
-        "01000110 01100101 01101100 01101001 01111010 00100000 01101110 01100001 01110110 01101001 01100100 01100001 01100100 00100000 01111001 00100000 01110000 01110010 01101111 01110011 01110000 01100101 01110010 01101111 00100000 01100001 11000011 10110001 01101111 00100000 01101110 01110101 01100101 01110110 01101111 0";
-      textoOld = textoOld.replace(/ /g, "");
-      let texto = " " + textoOld;
       function randomNumber(maxRango) {
         return Math.floor(Math.random() * maxRango);
       }
 
-      let exclamacion = "010000100100001001000";
-      let dos = randomNumber(5)
-      if(dos == 5){
-        exclamacion = exclamacion + "2"
-      }else{
-        exclamacion = exclamacion + "0"
+      let textoOld =
+        "01000110 01100101 01101100 01101001 01111010 00100000 01101110 01100001 01110110 01101001 01100100 01100001 01100100 00100000 01111001 00100000 01110000 01110010 01101111 01110011 01110000 01100101 01110010 01101111 00100000 01100001 11000011 10110001 01101111 00100000 01101110 01110101 01100101 01110110 01101111 0";
+      textoOld = textoOld.replace(/ /g, "");
+      let texto = " " + textoOld;
+
+      let exclamacion = "01000010010000100100";
+      let dos = randomNumber(10);
+     
+      if (dos == 0) {
+        console.log("es 5");
+        exclamacion = exclamacion + "2";  
+      } else {
+        exclamacion = exclamacion + "1";
       }
-
-
-
-
 
       function cambioColor() {
         let id;
@@ -161,7 +167,7 @@
         let arrayColores = [
           "red",
           "yellow",
-          "aquamarine",
+          "cyan",
           "chartreuse",
           "chartreuse",
           "chartreuse",
@@ -172,7 +178,7 @@
           do {
             idNumber = randomNumber(texto.length) + 1;
             id = "id" + idNumber;
-            console.log(id);
+
             if (!iluminadas.includes(id)) {
               iluminadas.push(id);
             }
@@ -188,12 +194,10 @@
               newColor == "chartreuse" ||
               (newColor != ant.style.color && newColor != post.style.color);
           } while (!valido);
-          // newColor = arrayColores[randomNumber(8)];
 
           document.getElementById(id).style.color = newColor;
         }
       }
-      //https://www.pyxofy.com/css-animation-changing-color/
 
       function execute() {
         let diveadas = 0;
@@ -225,7 +229,7 @@
         divTronco.classList.add("tronco");
         for (let i = 0; i < exclamacion.length; i++) {
           let div = document.createElement("div");
-          div.innerHTML = texto.charAt(i);
+          div.innerHTML = exclamacion.charAt(i);
           divTronco.appendChild(div);
         }
 
