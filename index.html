@@ -26,7 +26,7 @@
         height: 100%;
         width: 100%;
         background-image: url("https://img.freepik.com/vector-gratis/fondo-navideno-copos-nieve-estrellas_1048-9451.jpg?w=1380&t=st=1703065809~exp=1703066409~hmac=3cec720009c6a77057948fa9b8db3bfd33c97e615e7025fafd4f7efaee335cab");
-        background-repeat: no-repeat;
+        background-repeat: repeat;
         background-size: cover;
       }
 
@@ -126,6 +126,12 @@
         background-size: contain;
         background-repeat: no-repeat;
       }
+
+      @media (max-width: 1250px) {
+        
+      }
+
+
     </style>
     <script defer>
       let textoOld =
@@ -136,7 +142,18 @@
         return Math.floor(Math.random() * maxRango);
       }
 
-      let exclamacion = "0100001001000010010000";
+      let exclamacion = "010000100100001001000";
+      let dos = randomNumber(50)
+      if(dos == 50){
+        exclamacion = exclamacion + "2"
+      }else{
+        exclamacion = exclamacion + "0"
+      }
+
+
+
+
+
       function cambioColor() {
         let id;
         let iluminadas = [];
