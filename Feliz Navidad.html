@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Felicitación Navideña</title>
+    <!-- 
+      Creado por Ruben Pérez, Estela Cosculluela, Jaime Ferrer, Alex Lafarga, Pedro Plana, Javier Delgado
+    -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Rubik+Bubbles"
+    />
+    <style>
+      
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: black;
+      }
+      
+      body {
+        box-sizing: content-box;
+        height: 100%;
+        width: 100%;
+        background-image: url("https://img.freepik.com/vector-gratis/fondo-navideno-copos-nieve-estrellas_1048-9451.jpg?w=1380&t=st=1703065809~exp=1703066409~hmac=3cec720009c6a77057948fa9b8db3bfd33c97e615e7025fafd4f7efaee335cab");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      
+      h1 {
+        color: rgb(255, 224, 171);
+        font-family: monospace;
+        font-size: 1.2em;
+      }
+      
+      .pagina {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .container {
+        width: 100%;
+        height: 100%;
+        margin-top: 2%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: chartreuse;
+        font-size: xx-large;
+        font-weight: 900;
+        font-family: monospace;
+      }
+      
+      .fila {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .numero {
+        padding: 2px;
+      }
+      .tronco {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        color: rgb(143 92 40);
+        width: 4em;
+      }
+
+      .divRegalos {
+        width: 80vw;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .regalo {
+        width: 9em;
+        height: 6em;
+      }
+      
+      #id1 {
+        border-radius: 50%;
+        color: rgb(171, 147, 107);
+        height: 1.2em;
+        width: 1.2em;
+        text-align: center;
+        background-image: url("https://i.pinimg.com/originals/6b/d9/a6/6bd9a6481f7bc3eace50e285f10113ba.png");
+        background-size: contain;
+        padding: 0.5em;
+      }
+
+      #regalo1 {
+        background-image: url("https://www.freepnglogos.com/uploads/gift-png/gift-png-christmas-presents-clipart-png-clipground-15.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      #imagen1 {
+        width: 9em;
+        height: 6em;
+      }
+      
+      #regalo2 {
+        background-image: url("https://www.pngkey.com/png/full/76-767806_birthday-presents-png-birthday-gift-hd-png.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+      
+      #regalo3 {
+        background-image: url("https://freepngimg.com/download/gift/22483-2-christmas-gift-clipart.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+      
+      #regalo4 {
+        background-image: url("https://pngimg.com/d/gift_PNG100306.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+      
+    </style>
+    <script defer>
+      let textoOld =
+        "01000110 01100101 01101100 01101001 01111010 00100000 01101110 01100001 01110110 01101001 01100100 01100001 01100100 00100000 01111001 00100000 01110000 01110010 01101111 01110011 01110000 01100101 01110010 01101111 00100000 01100001 11000011 10110001 01101111 00100000 01101110 01110101 01100101 01110110 01101111 0";
+      textoOld = textoOld.replace(/ /g, "");
+      let texto = " " + textoOld;
+      function randomNumber(maxRango) {
+        return Math.floor(Math.random() * maxRango);
+      }
+
+      let exclamacion = "0100001001000010010000";
+      function cambioColor() {
+        let id;
+        let iluminadas = [];
+        let numeroIluminar = 45;
+        let arrayColores = [
+          "red",
+          "yellow",
+          "aquamarine",
+          "chartreuse",
+          "chartreuse",
+          "chartreuse",
+        ];
+        for (let i = 0; i < numeroIluminar; i++) {
+          let idNumber;
+          let newColor;
+          do {
+            idNumber = randomNumber(texto.length) + 1;
+            id = "id" + idNumber;
+            console.log(id);
+            if (!iluminadas.includes(id)) {
+              iluminadas.push(id);
+            }
+          } while (!iluminadas.includes(id) || id == "id1");
+          do {
+            var valido = false;
+            let antId = "id" + (idNumber - 1);
+            let ant = document.getElementById(antId);
+            let postId = "id" + (idNumber + 1);
+            let post = document.getElementById(postId);
+            newColor = arrayColores[randomNumber(arrayColores.length)];
+            valido =
+              newColor == "chartreuse" ||
+              (newColor != ant.style.color && newColor != post.style.color);
+          } while (!valido);
+          // newColor = arrayColores[randomNumber(8)];
+
+          document.getElementById(id).style.color = newColor;
+        }
+      }
+      //https://www.pyxofy.com/css-animation-changing-color/
+
+      function execute() {
+        let diveadas = 0;
+        let numIntroducir = 1;
+        let container = document.getElementById("container");
+        let contadorId = 1;
+        do {
+          let divFila = document.createElement("div");
+          let index = diveadas + numIntroducir - 1; //el indice desde el que empieza a meter en divs
+
+          for (let i = index; i < numIntroducir + index; i++) {
+            let divNum = document.createElement("div");
+            divNum.innerHTML = texto.charAt(i);
+            divNum.id = "id" + contadorId++;
+            divNum.classList.add("numero");
+            divFila.classList.add("fila");
+            divFila.appendChild(divNum);
+          }
+
+          diveadas = diveadas + numIntroducir; //ajustamos el numero de los char metidos en div
+          container.appendChild(divFila);
+          numIntroducir += 2;
+        } while (diveadas <= texto.length);
+
+        setInterval(cambioColor, 1200);
+
+        let divTronco = document.createElement("div");
+        divTronco.id = "tronco";
+        divTronco.classList.add("tronco");
+        for (let i = 0; i < exclamacion.length; i++) {
+          let div = document.createElement("div");
+          div.innerHTML = texto.charAt(i);
+          divTronco.appendChild(div);
+        }
+
+        container.appendChild(divTronco);
+        let divRegalos = document.createElement("div");
+        divRegalos.classList.add("divRegalos");
+        for (let i = 1; i <= 4; i++) {
+          let regalo = document.createElement("div");
+          regalo.id = "regalo" + i;
+          regalo.classList.add("regalo");
+          divRegalos.appendChild(regalo);
+        }
+        container.appendChild(divRegalos);
+
+        let a1 = document.createElement("a");
+        a1.href =
+          "https://wallpapers.com/images/high/paw-patrol-the-movie-marshall-xea2x75s9o2wvlm6.webp";
+        a1.id = "a1";
+        let imagen = document.createElement("img");
+        imagen.src =
+          "https://www.freepnglogos.com/uploads/gift-png/gift-png-christmas-presents-clipart-png-clipground-15.png";
+        imagen.id = "imagen1";
+        a1.appendChild(imagen);
+        let regalo1 = document.getElementById("regalo1");
+
+        regalo1.appendChild(a1);
+      }
+      window.onload = execute;
+    </script>
+  </head>
+  <body>
+    <div class="pagina">
+      <div class="container" id="container">
+        <h1>FELIZ NAVIDAD Y PROSPERO AÑO NUEVO</h1>
+      </div>
+    </div>
+  </body>
+</html>
